@@ -1,0 +1,36 @@
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
+
+    <display-name>Smart Mule</display-name>
+
+    <servlet>
+        <servlet-name>SmartMule</servlet-name> 
+        <servlet-class>guillaume.smartmule.SmartMuleServlet</servlet-class> 
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping> 
+        <servlet-name>SmartMule</servlet-name>
+        <url-pattern>/SmartMule</url-pattern> 
+    </servlet-mapping>
+
+    <resource-ref>
+        <description>Resource reference to a factory for javax.mail.Session instances that may be used for sending electronic mail messages, preconfigured to connect to the appropriate SMTP server.</description>
+        <res-ref-name>mail/Session</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-env-ref>
+        <description>Object factory for Smart Mule service.</description>
+        <resource-env-ref-name>config/Smartmule</resource-env-ref-name>
+        <resource-env-ref-type>guillaume.tomcat.companion.jndi.FilePlaceholder</resource-env-ref-type>
+        <res-auth>Container</res-auth>        
+    </resource-env-ref>
+
+</web-app>
+
+		
+	

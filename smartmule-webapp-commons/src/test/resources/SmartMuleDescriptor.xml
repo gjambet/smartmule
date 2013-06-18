@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<smartMuleDescriptor email="guillaume@oups.net">
+<moves>
+    <moves polling="1000">
+        <from>c:\SmartMuleFrom</from>
+        <to>c:\SmartMuleTo</to>
+    </moves>
+</moves>
+</smartMuleDescriptor>
