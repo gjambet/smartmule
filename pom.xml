@@ -1,5 +1,6 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>guillaume</groupId>
@@ -14,19 +15,33 @@
         <module>smartmule-webapp-commons</module>
         <module>smartmule-webapp</module>
     </modules>
-    
+
     <scm>
-        <connection>scm:svn:http://svn.oups.net/subversion/Guillaume/SmartMule/trunk</connection>
-        <developerConnection>scm:svn:http://svn.oups.net/subversion/Guillaume/SmartMule/trunk</developerConnection>
-    </scm>    
+        <connection>scm:git:git://github.com/gjambet/smartmule.git</connection>
+        <developerConnection>scm:git:git://github.com/gjambet/smartmule.git</developerConnection>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>oups-repo</id>
+            <name>Oups Repository</name>
+            <releases>true</releases>
+            <layout>default</layout>
+            <url>http://nexus.oups.net/content/repositories/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
     <dependencies>
 
-		<!-- LOGGING -->
+        <!-- LOGGING -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -43,7 +58,7 @@
             <version>1.2.16</version>
         </dependency>
 
-		<!-- TEST -->
+        <!-- TEST -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
