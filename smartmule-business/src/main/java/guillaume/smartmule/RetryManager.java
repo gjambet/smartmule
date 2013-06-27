@@ -5,21 +5,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 /**
- * User: Guillaume
- * Date: 31/08/12
- * Time: 00:38
+ * @author Guillaume
  */
 public class RetryManager {
 
-    private final Logger logger;
-
+    protected final Logger logger = getLogger(getClass());
     private int max;
-
-
-    public RetryManager(){
-        logger = LoggerFactory.getLogger(getClass());
-    }
 
     public RetryManager withMaxRetry(int retry) {
         this.max = retry;

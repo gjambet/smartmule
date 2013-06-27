@@ -8,15 +8,15 @@ import javax.mail.MessagingException;
 import guillaume.tomcat.companion.mail.MailSender;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
- *
- * @author Yom
+ * @author Guillaume
  */
 class MoveTask extends TimerTask {
 
-    private final Logger logger;
+    protected final Logger logger = getLogger(getClass());
 
     private MoveDescriptor move;
     private MailSender sender;
@@ -29,7 +29,6 @@ class MoveTask extends TimerTask {
         this.move = move;
         this.email = email;
         retryManager = new RetryManager().withMaxRetry(10);
-        logger = LoggerFactory.getLogger(getClass());
     }
 
     @Override
@@ -42,7 +41,7 @@ class MoveTask extends TimerTask {
             File to = new File(move.getTo());
 
             for (File f : from.listFiles()) {
-                if (f.isFile() && f.canWrite()) { //can write = pas en train d'�tre copi� par emule
+                if (f.isFile() && f.canWrite()) { // can write = pas en train d'être copié par emule
                     move(f, to);
                 }
             }

@@ -29,15 +29,9 @@
         <repository>
             <id>oups-repo</id>
             <name>Oups Repository</name>
-            <releases>true</releases>
-            <layout>default</layout>
             <url>http://nexus.oups.net/content/repositories/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
     </repositories>
-
 
     <dependencies>
 

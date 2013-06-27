@@ -1,36 +1,36 @@
 package guillaume.smartmule;
 
-import guillaume.smartmule.descriptors.SmartMuleDescriptorReader;
 import guillaume.smartmule.descriptors.SmartMuleDescriptor;
+import guillaume.smartmule.descriptors.SmartMuleDescriptorReader;
+import guillaume.tomcat.companion.VarFactory;
+import guillaume.tomcat.companion.jndi.FilePlaceholder;
+import guillaume.tomcat.companion.mail.MailSender;
+import guillaume.tomcat.companion.mail.MailSenderFactory;
+import org.slf4j.Logger;
+
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServlet;
 
-import guillaume.tomcat.companion.jndi.FilePlaceholder;
-import guillaume.tomcat.companion.jndi.JndiFactory;
-import guillaume.tomcat.companion.mail.MailSender;
-import guillaume.tomcat.companion.mail.MailSenderFactory;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
- *
  * @author Guillaume
  */
 public class SmartMuleServlet extends HttpServlet {
 
     private static final String SMARTMULE_DESCRIPTOR_JNDI_KEY = "config/Smartmule";
-    
-    private final Logger logger;
+    private static final String SMARTMULE_DESCRIPTOR_VAR_KEY = "SmartMule-Config";
+
+    protected final Logger logger = getLogger(getClass());
     
     private SmartMule service;
 
     public SmartMuleServlet() {
-        logger = LoggerFactory.getLogger(getClass());
         logger.debug("SmartMuleServlet loaded");
 
         try {
 
-            FilePlaceholder placeholder = new JndiFactory<FilePlaceholder>().getRessource(SMARTMULE_DESCRIPTOR_JNDI_KEY);
+            FilePlaceholder placeholder = new VarFactory().getRessource(SMARTMULE_DESCRIPTOR_VAR_KEY);
             SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(placeholder.getPath());
 
             MailSender mailSender = new MailSenderFactory().getMailSender();
