@@ -3,7 +3,7 @@ package guillaume.smartmule;
 import guillaume.smartmule.descriptors.SmartMuleDescriptor;
 import guillaume.smartmule.descriptors.SmartMuleDescriptorReader;
 import guillaume.tomcat.companion.VarFactory;
-import guillaume.tomcat.companion.jndi.FilePlaceholder;
+import guillaume.tomcat.companion.FilePlaceholder;
 import guillaume.tomcat.companion.mail.MailSender;
 import guillaume.tomcat.companion.mail.MailSenderFactory;
 import org.slf4j.Logger;
