@@ -38,7 +38,6 @@
             <groupId>guillaume</groupId>
             <artifactId>tomcat-companion</artifactId>
             <version>1.3-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
