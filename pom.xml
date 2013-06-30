@@ -16,22 +16,9 @@
         <module>smartmule-webapp</module>
     </modules>
 
-    <scm>
-        <connection>scm:git:git://github.com/gjambet/smartmule.git</connection>
-        <developerConnection>scm:git:git://github.com/gjambet/smartmule.git</developerConnection>
-    </scm>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>oups-repo</id>
-            <name>Oups Repository</name>
-            <url>http://nexus.oups.net/content/repositories/public/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
 
@@ -74,11 +61,11 @@
     </dependencies>
 
     <build>
+        <finalName>smartmule</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -86,5 +73,31 @@
             </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <connection>scm:git:git://github.com/gjambet/smartmule.git</connection>
+        <developerConnection>scm:git:git://github.com/gjambet/smartmule.git</developerConnection>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>oups-repo</id>
+            <name>Oups Repository</name>
+            <url>http://nexus.oups.net/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>oups-releases</id>
+            <name>Oups Releases</name>
+            <url>http://nexus.oups.net/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>oups-snapshots</id>
+            <name>Oups Snapshots</name>
+            <url>http://nexus.oups.net/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
