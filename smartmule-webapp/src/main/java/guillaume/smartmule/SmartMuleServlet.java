@@ -2,8 +2,6 @@ package guillaume.smartmule;
 
 import guillaume.smartmule.descriptors.SmartMuleDescriptor;
 import guillaume.smartmule.descriptors.SmartMuleDescriptorReader;
-import guillaume.tomcat.companion.VarFactory;
-import guillaume.tomcat.companion.FilePlaceholder;
 import guillaume.tomcat.companion.mail.MailSender;
 import guillaume.tomcat.companion.mail.MailSenderFactory;
 import org.slf4j.Logger;
@@ -18,7 +16,6 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class SmartMuleServlet extends HttpServlet {
 
-    private static final String SMARTMULE_DESCRIPTOR_JNDI_KEY = "config/Smartmule";
     private static final String SMARTMULE_DESCRIPTOR_VAR_KEY = "SmartMule-Config";
 
     protected final Logger logger = getLogger(getClass());
@@ -26,12 +23,18 @@ public class SmartMuleServlet extends HttpServlet {
     private SmartMule service;
 
     public SmartMuleServlet() {
+
         logger.debug("SmartMuleServlet loaded");
 
         try {
 
-            FilePlaceholder placeholder = new VarFactory().getRessource(SMARTMULE_DESCRIPTOR_VAR_KEY);
-            SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(placeholder.getPath());
+            String path = System.getenv(SMARTMULE_DESCRIPTOR_VAR_KEY);
+
+            if (path == null || path.trim().isEmpty()) {
+                logger.error("Missing configuration var '{}' not found.", SMARTMULE_DESCRIPTOR_VAR_KEY.toString());
+            }
+
+            SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(path);
 
             MailSender mailSender = new MailSenderFactory().getMailSender();
 
