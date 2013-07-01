@@ -28,10 +28,11 @@ public class SmartMuleServlet extends HttpServlet {
 
         try {
 
-            String path = System.getenv(SMARTMULE_DESCRIPTOR_VAR_KEY);
+            String path = System.getProperty(SMARTMULE_DESCRIPTOR_VAR_KEY);
 
             if (path == null || path.trim().isEmpty()) {
                 logger.error("Missing configuration var '{}' not found.", SMARTMULE_DESCRIPTOR_VAR_KEY.toString());
+                return;
             }
 
             SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(path);
