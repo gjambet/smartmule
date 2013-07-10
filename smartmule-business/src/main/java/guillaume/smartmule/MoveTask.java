@@ -35,8 +35,6 @@ class MoveTask extends TimerTask {
     public void run() {
         try {
 
-            logger.trace("running");
-
             File from = new File(move.getFrom());
             File to = new File(move.getTo());
 
@@ -49,7 +47,6 @@ class MoveTask extends TimerTask {
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
         }
-
 
     }
 

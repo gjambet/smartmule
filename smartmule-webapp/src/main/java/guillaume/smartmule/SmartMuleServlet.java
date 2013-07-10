@@ -33,6 +33,8 @@ public class SmartMuleServlet extends HttpServlet {
             if (path == null || path.trim().isEmpty()) {
                 logger.error("Missing configuration var '{}' not found.", SMARTMULE_DESCRIPTOR_VAR_KEY.toString());
                 return;
+            }  else {
+                logger.info("SmartMule started with configuration : " + path);
             }
 
             SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(path);
