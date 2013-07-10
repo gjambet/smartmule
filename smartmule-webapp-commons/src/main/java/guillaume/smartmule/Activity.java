@@ -5,6 +5,8 @@ import java.util.Date;
 public final class Activity {
 
     private static Activity activity;
+    private Date started;
+    private String configuration;
 
     private Activity() {
     }
@@ -19,6 +21,20 @@ public final class Activity {
     }
 
     public String started() {
-        return new Date().toGMTString();
+        return started.toGMTString();
+    }
+
+    public String getConfiguration() {
+        return configuration;
+    }
+
+    public Activity starting(Date time) {
+        started = time;
+        return this;
+    }
+
+    public Activity withConfiguration(String path) {
+        configuration = path;
+        return this;
     }
 }

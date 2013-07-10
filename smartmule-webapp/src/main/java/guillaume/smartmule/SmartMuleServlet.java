@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServlet;
 
+import java.util.Calendar;
+
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
@@ -35,6 +37,8 @@ public class SmartMuleServlet extends HttpServlet {
                 return;
             }  else {
                 logger.info("SmartMule started with configuration : " + path);
+
+                Activity.get().starting(Calendar.getInstance().getTime()).withConfiguration(path);
             }
 
             SmartMuleDescriptor descriptor = SmartMuleDescriptorReader.getDescriptor(path);

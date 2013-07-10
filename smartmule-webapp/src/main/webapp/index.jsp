@@ -9,6 +9,9 @@
 <div>
     Running since <% out.println(Activity.get().started()); %>
 </div>
+<div>
+    With configuration <% out.println(Activity.get().getConfiguration()); %>
+</div>
 
 <br/>
 
